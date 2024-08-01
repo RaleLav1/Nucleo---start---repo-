@@ -1,0 +1,21 @@
+!SESSION 2024-08-01 15:02:46.969 -----------------------------------------------
+eclipse.buildId=Version 1.16.0
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-08-01 15:03:07.667
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-08-01 15:03:07.674
+!MESSAGE Log4j2 initialized with config file C:\+   Desktop\robot sara\programi\Nucleo---start---repo-\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-08-01 15:03:15.990
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-08-01 15:14:10.418
+!MESSAGE Indexed 'Led_blink' (22 sources, 82 headers) in 5.73 sec: 4,755 declarations; 22,614 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0073%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-08-01 15:41:48.244
+!MESSAGE Indexed 'Led_taster' (22 sources, 82 headers) in 1.44 sec: 4,755 declarations; 22,614 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0073%)

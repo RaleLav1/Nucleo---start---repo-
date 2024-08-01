@@ -1,0 +1,10 @@
+15:53:03 **** Incremental Build of configuration Debug for project Led_taster ****
+make -j16 all 
+arm-none-eabi-size  Led_taster.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7904	     12	   1644	   9560	   2558	Led_taster.elf
+Finished building: default.size.stdout
+ 
+
+15:53:03 Build Finished. 0 errors, 0 warnings. (took 486ms)
+
