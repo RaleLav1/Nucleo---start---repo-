@@ -1,19 +1,19 @@
 /**
-  ******************************************************************************
-  * @file    stm32f4xx_hal_pwr_ex.h
-  * @author  MCD Application Team
-  * @brief   Header file of PWR HAL Extension module.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file in
-  * the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  ******************************************************************************
-  */ 
+ ******************************************************************************
+ * @file    stm32f4xx_hal_pwr_ex.h
+ * @author  MCD Application Team
+ * @brief   Header file of PWR HAL Extension module.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2017 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file in
+ * the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ ******************************************************************************
+ */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32F4xx_HAL_PWR_EX_H
@@ -27,18 +27,18 @@
 #include "stm32f4xx_hal_def.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver
-  * @{
-  */
+ * @{
+ */
 
 /** @addtogroup PWREx
-  * @{
-  */ 
+ * @{
+ */
 
-/* Exported types ------------------------------------------------------------*/ 
+/* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /** @defgroup PWREx_Exported_Constants PWREx Exported Constants
-  * @{
-  */
+ * @{
+ */
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\
     defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx)
    
@@ -63,8 +63,8 @@
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F446xx || STM32F469xx || STM32F479xx */
 
 /** @defgroup PWREx_Regulator_Voltage_Scale PWREx Regulator Voltage Scale
-  * @{
-  */
+ * @{
+ */
 #if defined(STM32F405xx) || defined(STM32F407xx) || defined(STM32F415xx) || defined(STM32F417xx)   
 #define PWR_REGULATOR_VOLTAGE_SCALE1         PWR_CR_VOS             /* Scale 1 mode(default value at reset): the maximum value of fHCLK = 168 MHz. */
 #define PWR_REGULATOR_VOLTAGE_SCALE2         0x00000000U            /* Scale 2 mode: the maximum value of fHCLK = 144 MHz. */
@@ -76,8 +76,8 @@
 #define PWR_REGULATOR_VOLTAGE_SCALE3         PWR_CR_VOS_0           /* Scale 3 mode: the maximum value of fHCLK is 120 MHz. */
 #endif /* STM32F405xx || STM32F407xx || STM32F415xx || STM32F417xx */ 
 /**
-  * @}
-  */
+ * @}
+ */
 #if defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx) || defined(STM32F446xx) || defined(STM32F412Zx) || defined(STM32F412Vx) || \
     defined(STM32F412Rx) || defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx)
 /** @defgroup PWREx_WakeUp_Pins PWREx WakeUp Pins
@@ -96,13 +96,13 @@
           STM32F413xx || STM32F423xx */
 
 /**
-  * @}
-  */ 
-  
+ * @}
+ */
+
 /* Exported macro ------------------------------------------------------------*/
 /** @defgroup PWREx_Exported_Constants PWREx Exported Constants
-  *  @{
-  */
+ *  @{
+ */
 
 #if defined(STM32F405xx) || defined(STM32F407xx) || defined(STM32F415xx) || defined(STM32F417xx)
 /** @brief  macros configure the main internal regulator output voltage.
@@ -123,15 +123,15 @@
                                                           } while(0U)
 #else
 /** @brief  macros configure the main internal regulator output voltage.
-  * @param  __REGULATOR__ specifies the regulator output voltage to achieve
-  *         a tradeoff between performance and power consumption when the device does
-  *         not operate at the maximum frequency (refer to the datasheets for more details).
-  *          This parameter can be one of the following values:
-  *            @arg PWR_REGULATOR_VOLTAGE_SCALE1: Regulator voltage output Scale 1 mode
-  *            @arg PWR_REGULATOR_VOLTAGE_SCALE2: Regulator voltage output Scale 2 mode
-  *            @arg PWR_REGULATOR_VOLTAGE_SCALE3: Regulator voltage output Scale 3 mode
-  * @retval None
-  */
+ * @param  __REGULATOR__ specifies the regulator output voltage to achieve
+ *         a tradeoff between performance and power consumption when the device does
+ *         not operate at the maximum frequency (refer to the datasheets for more details).
+ *          This parameter can be one of the following values:
+ *            @arg PWR_REGULATOR_VOLTAGE_SCALE1: Regulator voltage output Scale 1 mode
+ *            @arg PWR_REGULATOR_VOLTAGE_SCALE2: Regulator voltage output Scale 2 mode
+ *            @arg PWR_REGULATOR_VOLTAGE_SCALE3: Regulator voltage output Scale 3 mode
+ * @retval None
+ */
 #define __HAL_PWR_VOLTAGESCALING_CONFIG(__REGULATOR__) do {                                                     \
                                                             __IO uint32_t tmpreg = 0x00U;                        \
                                                             MODIFY_REG(PWR->CR, PWR_CR_VOS, (__REGULATOR__));   \
@@ -189,21 +189,21 @@
 
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F446xx || STM32F469xx || STM32F479xx */
 /**
-  * @}
-  */
+ * @}
+ */
 
 /* Exported functions --------------------------------------------------------*/
 /** @addtogroup PWREx_Exported_Functions PWREx Exported Functions
-  *  @{
-  */
- 
+ *  @{
+ */
+
 /** @addtogroup PWREx_Exported_Functions_Group1
-  * @{
-  */
+ * @{
+ */
 void HAL_PWREx_EnableFlashPowerDown(void);
-void HAL_PWREx_DisableFlashPowerDown(void); 
+void HAL_PWREx_DisableFlashPowerDown(void);
 HAL_StatusTypeDef HAL_PWREx_EnableBkUpReg(void);
-HAL_StatusTypeDef HAL_PWREx_DisableBkUpReg(void); 
+HAL_StatusTypeDef HAL_PWREx_DisableBkUpReg(void);
 uint32_t HAL_PWREx_GetVoltageRange(void);
 HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling);
 
@@ -225,22 +225,22 @@ HAL_StatusTypeDef HAL_PWREx_EnterUnderDriveSTOPMode(uint32_t Regulator, uint8_t 
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F446xx || STM32F469xx || STM32F479xx */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 /* Private types -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private constants ---------------------------------------------------------*/
 /** @defgroup PWREx_Private_Constants PWREx Private Constants
-  * @{
-  */
+ * @{
+ */
 
 /** @defgroup PWREx_register_alias_address PWREx Register alias address
-  * @{
-  */
+ * @{
+ */
 /* ------------- PWR registers bit address in the alias region ---------------*/
 /* --- CR Register ---*/
 /* Alias word address of FPDS bit */
@@ -254,7 +254,7 @@ HAL_StatusTypeDef HAL_PWREx_EnterUnderDriveSTOPMode(uint32_t Regulator, uint8_t 
 /* Alias word address of ODSWEN bit */
 #define ODSWEN_BIT_NUMBER        PWR_CR_ODSWEN_Pos
 #define CR_ODSWEN_BB             (uint32_t)(PERIPH_BB_BASE + (PWR_CR_OFFSET_BB * 32U) + (ODSWEN_BIT_NUMBER * 4U))
-    
+
 /* Alias word address of MRLVDS bit */
 #define MRLVDS_BIT_NUMBER        PWR_CR_MRLVDS_Pos
 #define CR_MRLVDS_BB             (uint32_t)(PERIPH_BB_BASE + (PWR_CR_OFFSET_BB * 32U) + (MRLVDS_BIT_NUMBER * 4U))
@@ -263,34 +263,34 @@ HAL_StatusTypeDef HAL_PWREx_EnterUnderDriveSTOPMode(uint32_t Regulator, uint8_t 
 #define LPLVDS_BIT_NUMBER        PWR_CR_LPLVDS_Pos
 #define CR_LPLVDS_BB             (uint32_t)(PERIPH_BB_BASE + (PWR_CR_OFFSET_BB * 32U) + (LPLVDS_BIT_NUMBER * 4U))
 
- /**
-  * @}
-  */
+/**
+ * @}
+ */
 
 /** @defgroup PWREx_CSR_register_alias PWRx CSR Register alias address
-  * @{
-  */  
+ * @{
+ */
 /* --- CSR Register ---*/
 /* Alias word address of BRE bit */
 #define BRE_BIT_NUMBER   PWR_CSR_BRE_Pos
 #define CSR_BRE_BB      (uint32_t)(PERIPH_BB_BASE + (PWR_CSR_OFFSET_BB * 32U) + (BRE_BIT_NUMBER * 4U))
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /* Private macros ------------------------------------------------------------*/
 /** @defgroup PWREx_Private_Macros PWREx Private Macros
-  * @{
-  */
+ * @{
+ */
 
 /** @defgroup PWREx_IS_PWR_Definitions PWREx Private macros to check input parameters
-  * @{
-  */
+ * @{
+ */
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\
     defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx)
 #define IS_PWR_REGULATOR_UNDERDRIVE(REGULATOR) (((REGULATOR) == PWR_MAINREGULATOR_UNDERDRIVE_ON) || \
@@ -317,24 +317,23 @@ HAL_StatusTypeDef HAL_PWREx_EnterUnderDriveSTOPMode(uint32_t Regulator, uint8_t 
 #define IS_PWR_WAKEUP_PIN(PIN) ((PIN) == PWR_WAKEUP_PIN1)
 #endif /* STM32F446xx */
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */ 
+ * @}
+ */
 
 /**
-  * @}
-  */
-  
+ * @}
+ */
+
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif /* __STM32F4xx_HAL_PWR_EX_H */
