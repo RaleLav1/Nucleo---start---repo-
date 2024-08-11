@@ -1,0 +1,10 @@
+12:18:29 **** Incremental Build of configuration Debug for project Taster_debounce ****
+make -j16 all 
+arm-none-eabi-size  Taster_debounce.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7976	     12	   1652	   9640	   25a8	Taster_debounce.elf
+Finished building: default.size.stdout
+ 
+
+12:18:29 Build Finished. 0 errors, 0 warnings. (took 370ms)
+

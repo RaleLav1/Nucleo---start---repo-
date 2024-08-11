@@ -1,21 +1,21 @@
-15:49:39 **** Incremental Build of configuration Debug for project Servo_motor_basic ****
+12:18:21 **** Incremental Build of configuration Debug for project Taster_debounce ****
 make -j16 all 
-arm-none-eabi-size  Servo_motor_basic.elf 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Taster_debounce.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\+   Desktop\robot sara\programi\Nucleo---start---repo-\Taster_debounce\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Taster_debounce.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Taster_debounce.elf
+ 
+arm-none-eabi-size  Taster_debounce.elf 
+arm-none-eabi-objdump -h -S Taster_debounce.elf  > "Taster_debounce.list"
    text	   data	    bss	    dec	    hex	filename
-  12080	     12	   1716	  13808	   35f0	Servo_motor_basic.elf
+   7976	     12	   1652	   9640	   25a8	Taster_debounce.elf
 Finished building: default.size.stdout
  
-15:49:46 **** Incremental Build of configuration Debug for project Servo_motor_basic ****
-make -j16 all 
-arm-none-eabi-size  Servo_motor_basic.elf 
-   text	   data	    bss	    dec	    hex	filename
-  12080	     12	   1716	  13808	   35f0	Servo_motor_basic.elf
-Finished building: default.size.stdout
+Finished building: Taster_debounce.list
  
-15:54:57 **** Incremental Build of configuration Debug for project Servo_motor_basic ****
+12:18:29 **** Incremental Build of configuration Debug for project Taster_debounce ****
 make -j16 all 
-arm-none-eabi-size  Servo_motor_basic.elf 
+arm-none-eabi-size  Taster_debounce.elf 
    text	   data	    bss	    dec	    hex	filename
-  12080	     12	   1716	  13808	   35f0	Servo_motor_basic.elf
+   7976	     12	   1652	   9640	   25a8	Taster_debounce.elf
 Finished building: default.size.stdout
  

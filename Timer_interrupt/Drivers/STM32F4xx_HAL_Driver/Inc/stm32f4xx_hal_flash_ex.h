@@ -42,47 +42,49 @@
 /**
  * @brief  FLASH Erase structure definition
  */
-typedef struct {
-	uint32_t TypeErase; /*!< Mass erase or sector Erase.
-	 This parameter can be a value of @ref FLASHEx_Type_Erase */
+typedef struct
+{
+    uint32_t TypeErase; /*!< Mass erase or sector Erase.
+     This parameter can be a value of @ref FLASHEx_Type_Erase */
 
-	uint32_t Banks; /*!< Select banks to erase when Mass erase is enabled.
-	 This parameter must be a value of @ref FLASHEx_Banks */
+    uint32_t Banks; /*!< Select banks to erase when Mass erase is enabled.
+     This parameter must be a value of @ref FLASHEx_Banks */
 
-	uint32_t Sector; /*!< Initial FLASH sector to erase when Mass erase is disabled
-	 This parameter must be a value of @ref FLASHEx_Sectors */
+    uint32_t Sector; /*!< Initial FLASH sector to erase when Mass erase is disabled
+     This parameter must be a value of @ref FLASHEx_Sectors */
 
-	uint32_t NbSectors; /*!< Number of sectors to be erased.
-	 This parameter must be a value between 1 and (max number of sectors - value of Initial sector)*/
+    uint32_t NbSectors; /*!< Number of sectors to be erased.
+     This parameter must be a value between 1 and (max number of sectors - value of Initial sector)*/
 
-	uint32_t VoltageRange;/*!< The device voltage range which defines the erase parallelism
-	 This parameter must be a value of @ref FLASHEx_Voltage_Range */
+    uint32_t VoltageRange;/*!< The device voltage range which defines the erase parallelism
+     This parameter must be a value of @ref FLASHEx_Voltage_Range */
 
 } FLASH_EraseInitTypeDef;
 
 /**
  * @brief  FLASH Option Bytes Program structure definition
  */
-typedef struct {
-	uint32_t OptionType; /*!< Option byte to be configured.
-	 This parameter can be a value of @ref FLASHEx_Option_Type */
+typedef struct
+{
+    uint32_t OptionType; /*!< Option byte to be configured.
+     This parameter can be a value of @ref FLASHEx_Option_Type */
 
-	uint32_t WRPState; /*!< Write protection activation or deactivation.
-	 This parameter can be a value of @ref FLASHEx_WRP_State */
+    uint32_t WRPState; /*!< Write protection activation or deactivation.
+     This parameter can be a value of @ref FLASHEx_WRP_State */
 
-	uint32_t WRPSector; /*!< Specifies the sector(s) to be write protected.
-	 The value of this parameter depend on device used within the same series */
+    uint32_t WRPSector; /*!< Specifies the sector(s) to be write protected.
+     The value of this parameter depend on device used within the same series */
 
-	uint32_t Banks; /*!< Select banks for WRP activation/deactivation of all sectors.
-	 This parameter must be a value of @ref FLASHEx_Banks */
+    uint32_t Banks; /*!< Select banks for WRP activation/deactivation of all sectors.
+     This parameter must be a value of @ref FLASHEx_Banks */
 
-	uint32_t RDPLevel; /*!< Set the read protection level.
-	 This parameter can be a value of @ref FLASHEx_Option_Bytes_Read_Protection */
+    uint32_t RDPLevel; /*!< Set the read protection level.
+     This parameter can be a value of @ref FLASHEx_Option_Bytes_Read_Protection */
 
-	uint32_t BORLevel; /*!< Set the BOR Level.
-	 This parameter can be a value of @ref FLASHEx_BOR_Reset_Level */
+    uint32_t BORLevel; /*!< Set the BOR Level.
+     This parameter can be a value of @ref FLASHEx_BOR_Reset_Level */
 
-	uint8_t USERConfig; /*!< Program the FLASH User Option Byte: IWDG_SW / RST_STOP / RST_STDBY. */
+    uint8_t USERConfig; /*!< Program the FLASH User Option Byte: IWDG_SW / RST_STOP / RST_STDBY. */
 
 } FLASH_OBProgramInitTypeDef;
 
@@ -94,17 +96,18 @@ typedef struct {
     defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) || defined(STM32F469xx) ||\
     defined(STM32F479xx) || defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) ||\
     defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx)
-typedef struct {
-	uint32_t OptionType; /*!< Option byte to be configured for extension.
-	 This parameter can be a value of @ref FLASHEx_Advanced_Option_Type */
+typedef struct
+{
+    uint32_t OptionType; /*!< Option byte to be configured for extension.
+     This parameter can be a value of @ref FLASHEx_Advanced_Option_Type */
 
-	uint32_t PCROPState; /*!< PCROP activation or deactivation.
-	 This parameter can be a value of @ref FLASHEx_PCROP_State */
+    uint32_t PCROPState; /*!< PCROP activation or deactivation.
+     This parameter can be a value of @ref FLASHEx_PCROP_State */
 
 #if defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx) || defined(STM32F411xE) || defined(STM32F446xx) || defined(STM32F412Zx) ||\
     defined(STM32F412Vx) || defined(STM32F412Rx) || defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx)
-	uint16_t Sectors; /*!< specifies the sector(s) set for PCROP.
-	 This parameter can be a value of @ref FLASHEx_Option_Bytes_PC_ReadWrite_Protection */
+    uint16_t Sectors; /*!< specifies the sector(s) set for PCROP.
+     This parameter can be a value of @ref FLASHEx_Option_Bytes_PC_ReadWrite_Protection */
 #endif /* STM32F401xC || STM32F401xE || STM32F410xx || STM32F411xE || STM32F446xx || STM32F412Zx || STM32F412Vx || STM32F412Rx ||\
           STM32F412Cx || STM32F413xx || STM32F423xx */
 
@@ -718,7 +721,7 @@ typedef struct {
  */
 /* Extension Program operation functions  *************************************/
 HAL_StatusTypeDef HAL_FLASHEx_Erase(FLASH_EraseInitTypeDef *pEraseInit,
-		uint32_t *SectorError);
+        uint32_t *SectorError);
 HAL_StatusTypeDef HAL_FLASHEx_Erase_IT(FLASH_EraseInitTypeDef *pEraseInit);
 HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit);
 void HAL_FLASHEx_OBGetConfig(FLASH_OBProgramInitTypeDef *pOBInit);
@@ -729,7 +732,7 @@ void HAL_FLASHEx_OBGetConfig(FLASH_OBProgramInitTypeDef *pOBInit);
     defined(STM32F479xx) || defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) ||\
     defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx)
 HAL_StatusTypeDef HAL_FLASHEx_AdvOBProgram(
-		FLASH_AdvOBProgramInitTypeDef *pAdvOBInit);
+        FLASH_AdvOBProgramInitTypeDef *pAdvOBInit);
 void HAL_FLASHEx_AdvOBGetConfig(FLASH_AdvOBProgramInitTypeDef *pAdvOBInit);
 HAL_StatusTypeDef HAL_FLASHEx_OB_SelectPCROP(void);
 HAL_StatusTypeDef HAL_FLASHEx_OB_DeSelectPCROP(void);

@@ -137,58 +137,66 @@
  * @brief Enables the Backup Regulator.
  * @retval HAL status
  */
-HAL_StatusTypeDef HAL_PWREx_EnableBkUpReg(void) {
-	uint32_t tickstart = 0U;
+HAL_StatusTypeDef HAL_PWREx_EnableBkUpReg(void)
+{
+    uint32_t tickstart = 0U;
 
-	*(__IO uint32_t*) CSR_BRE_BB = (uint32_t) ENABLE;
+    *(__IO uint32_t*) CSR_BRE_BB = (uint32_t) ENABLE;
 
-	/* Get tick */
-	tickstart = HAL_GetTick();
+    /* Get tick */
+    tickstart = HAL_GetTick();
 
-	/* Wait till Backup regulator ready flag is set */
-	while (__HAL_PWR_GET_FLAG(PWR_FLAG_BRR) == RESET) {
-		if ((HAL_GetTick() - tickstart) > PWR_BKPREG_TIMEOUT_VALUE) {
-			return HAL_TIMEOUT;
-		}
-	}
-	return HAL_OK;
+    /* Wait till Backup regulator ready flag is set */
+    while (__HAL_PWR_GET_FLAG(PWR_FLAG_BRR) == RESET)
+    {
+        if ((HAL_GetTick() - tickstart) > PWR_BKPREG_TIMEOUT_VALUE)
+        {
+            return HAL_TIMEOUT;
+        }
+    }
+    return HAL_OK;
 }
 
 /**
  * @brief Disables the Backup Regulator.
  * @retval HAL status
  */
-HAL_StatusTypeDef HAL_PWREx_DisableBkUpReg(void) {
-	uint32_t tickstart = 0U;
+HAL_StatusTypeDef HAL_PWREx_DisableBkUpReg(void)
+{
+    uint32_t tickstart = 0U;
 
-	*(__IO uint32_t*) CSR_BRE_BB = (uint32_t) DISABLE;
+    *(__IO uint32_t*) CSR_BRE_BB = (uint32_t) DISABLE;
 
-	/* Get tick */
-	tickstart = HAL_GetTick();
+    /* Get tick */
+    tickstart = HAL_GetTick();
 
-	/* Wait till Backup regulator ready flag is set */
-	while (__HAL_PWR_GET_FLAG(PWR_FLAG_BRR) != RESET) {
-		if ((HAL_GetTick() - tickstart) > PWR_BKPREG_TIMEOUT_VALUE) {
-			return HAL_TIMEOUT;
-		}
-	}
-	return HAL_OK;
+    /* Wait till Backup regulator ready flag is set */
+    while (__HAL_PWR_GET_FLAG(PWR_FLAG_BRR) != RESET)
+    {
+        if ((HAL_GetTick() - tickstart) > PWR_BKPREG_TIMEOUT_VALUE)
+        {
+            return HAL_TIMEOUT;
+        }
+    }
+    return HAL_OK;
 }
 
 /**
  * @brief Enables the Flash Power Down in Stop mode.
  * @retval None
  */
-void HAL_PWREx_EnableFlashPowerDown(void) {
-	*(__IO uint32_t*) CR_FPDS_BB = (uint32_t) ENABLE;
+void HAL_PWREx_EnableFlashPowerDown(void)
+{
+    *(__IO uint32_t*) CR_FPDS_BB = (uint32_t) ENABLE;
 }
 
 /**
  * @brief Disables the Flash Power Down in Stop mode.
  * @retval None
  */
-void HAL_PWREx_DisableFlashPowerDown(void) {
-	*(__IO uint32_t*) CR_FPDS_BB = (uint32_t) DISABLE;
+void HAL_PWREx_DisableFlashPowerDown(void)
+{
+    *(__IO uint32_t*) CR_FPDS_BB = (uint32_t) DISABLE;
 }
 
 /**
@@ -199,8 +207,9 @@ void HAL_PWREx_DisableFlashPowerDown(void) {
  *            - @arg PWR_REGULATOR_VOLTAGE_SCALE2: Regulator voltage output Scale 2 mode
  *            - @arg PWR_REGULATOR_VOLTAGE_SCALE3: Regulator voltage output Scale 3 mode
  */
-uint32_t HAL_PWREx_GetVoltageRange(void) {
-	return (PWR->CR & PWR_CR_VOS);
+uint32_t HAL_PWREx_GetVoltageRange(void)
+{
+    return (PWR->CR & PWR_CR_VOS);
 }
 
 #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
@@ -275,55 +284,64 @@ HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling)
  * @note The new voltage scale is active only when the PLL is ON.  
  * @retval HAL Status
  */
-HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling) {
-	uint32_t tickstart = 0U;
+HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling)
+{
+    uint32_t tickstart = 0U;
 
-	assert_param(IS_PWR_VOLTAGE_SCALING_RANGE(VoltageScaling));
+    assert_param(IS_PWR_VOLTAGE_SCALING_RANGE(VoltageScaling));
 
-	/* Enable PWR RCC Clock Peripheral */
-	__HAL_RCC_PWR_CLK_ENABLE();
+    /* Enable PWR RCC Clock Peripheral */
+    __HAL_RCC_PWR_CLK_ENABLE();
 
-	/* Check if the PLL is used as system clock or not */
-	if (__HAL_RCC_GET_SYSCLK_SOURCE() != RCC_CFGR_SWS_PLL) {
-		/* Disable the main PLL */
-		__HAL_RCC_PLL_DISABLE();
+    /* Check if the PLL is used as system clock or not */
+    if (__HAL_RCC_GET_SYSCLK_SOURCE() != RCC_CFGR_SWS_PLL)
+    {
+        /* Disable the main PLL */
+        __HAL_RCC_PLL_DISABLE();
 
-		/* Get Start Tick */
-		tickstart = HAL_GetTick();
-		/* Wait till PLL is disabled */
-		while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLRDY) != RESET) {
-			if ((HAL_GetTick() - tickstart) > PLL_TIMEOUT_VALUE) {
-				return HAL_TIMEOUT;
-			}
-		}
+        /* Get Start Tick */
+        tickstart = HAL_GetTick();
+        /* Wait till PLL is disabled */
+        while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLRDY) != RESET)
+        {
+            if ((HAL_GetTick() - tickstart) > PLL_TIMEOUT_VALUE)
+            {
+                return HAL_TIMEOUT;
+            }
+        }
 
-		/* Set Range */
-		__HAL_PWR_VOLTAGESCALING_CONFIG(VoltageScaling);
+        /* Set Range */
+        __HAL_PWR_VOLTAGESCALING_CONFIG(VoltageScaling);
 
-		/* Enable the main PLL */
-		__HAL_RCC_PLL_ENABLE();
+        /* Enable the main PLL */
+        __HAL_RCC_PLL_ENABLE();
 
-		/* Get Start Tick */
-		tickstart = HAL_GetTick();
-		/* Wait till PLL is ready */
-		while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLRDY) == RESET) {
-			if ((HAL_GetTick() - tickstart) > PLL_TIMEOUT_VALUE) {
-				return HAL_TIMEOUT;
-			}
-		}
+        /* Get Start Tick */
+        tickstart = HAL_GetTick();
+        /* Wait till PLL is ready */
+        while (__HAL_RCC_GET_FLAG(RCC_FLAG_PLLRDY) == RESET)
+        {
+            if ((HAL_GetTick() - tickstart) > PLL_TIMEOUT_VALUE)
+            {
+                return HAL_TIMEOUT;
+            }
+        }
 
-		/* Get Start Tick */
-		tickstart = HAL_GetTick();
-		while ((__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY) == RESET)) {
-			if ((HAL_GetTick() - tickstart) > PWR_VOSRDY_TIMEOUT_VALUE) {
-				return HAL_TIMEOUT;
-			}
-		}
-	} else {
-		return HAL_ERROR;
-	}
+        /* Get Start Tick */
+        tickstart = HAL_GetTick();
+        while ((__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY) == RESET))
+        {
+            if ((HAL_GetTick() - tickstart) > PWR_VOSRDY_TIMEOUT_VALUE)
+            {
+                return HAL_TIMEOUT;
+            }
+        }
+    } else
+    {
+        return HAL_ERROR;
+    }
 
-	return HAL_OK;
+    return HAL_OK;
 }
 #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
 
@@ -336,8 +354,9 @@ HAL_StatusTypeDef HAL_PWREx_ControlVoltageScaling(uint32_t VoltageScaling) {
  *        STM32F413xx/STM32F423xx devices.   
  * @retval None
  */
-void HAL_PWREx_EnableMainRegulatorLowVoltage(void) {
-	*(__IO uint32_t*) CR_MRLVDS_BB = (uint32_t) ENABLE;
+void HAL_PWREx_EnableMainRegulatorLowVoltage(void)
+{
+    *(__IO uint32_t*) CR_MRLVDS_BB = (uint32_t) ENABLE;
 }
 
 /**
@@ -346,8 +365,9 @@ void HAL_PWREx_EnableMainRegulatorLowVoltage(void) {
  *        STM32F413xx/STM32F423xxdevices. 
  * @retval None
  */
-void HAL_PWREx_DisableMainRegulatorLowVoltage(void) {
-	*(__IO uint32_t*) CR_MRLVDS_BB = (uint32_t) DISABLE;
+void HAL_PWREx_DisableMainRegulatorLowVoltage(void)
+{
+    *(__IO uint32_t*) CR_MRLVDS_BB = (uint32_t) DISABLE;
 }
 
 /**
@@ -356,8 +376,9 @@ void HAL_PWREx_DisableMainRegulatorLowVoltage(void) {
  *        STM32F413xx/STM32F423xx devices.   
  * @retval None
  */
-void HAL_PWREx_EnableLowRegulatorLowVoltage(void) {
-	*(__IO uint32_t*) CR_LPLVDS_BB = (uint32_t) ENABLE;
+void HAL_PWREx_EnableLowRegulatorLowVoltage(void)
+{
+    *(__IO uint32_t*) CR_LPLVDS_BB = (uint32_t) ENABLE;
 }
 
 /**
@@ -366,8 +387,9 @@ void HAL_PWREx_EnableLowRegulatorLowVoltage(void) {
  *        STM32F413xx/STM32F423xx  devices.   
  * @retval None
  */
-void HAL_PWREx_DisableLowRegulatorLowVoltage(void) {
-	*(__IO uint32_t*) CR_LPLVDS_BB = (uint32_t) DISABLE;
+void HAL_PWREx_DisableLowRegulatorLowVoltage(void)
+{
+    *(__IO uint32_t*) CR_LPLVDS_BB = (uint32_t) DISABLE;
 }
 
 #endif /* STM32F401xC || STM32F401xE || STM32F410xx || STM32F411xE || STM32F412Zx || STM32F412Rx || STM32F412Vx || STM32F412Cx ||
